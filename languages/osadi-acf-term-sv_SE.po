@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF Field - Term v1.0.0\n"
+"POT-Creation-Date: 2015-03-09 09:17+0100\n"
+"PO-Revision-Date: 2015-03-09 09:24+0100\n"
+"Last-Translator: \n"
+"Language-Team: Osadi\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: class-osadi-acf-field-term.php:47
+msgid "Allow Null?"
+msgstr "Tillåt nollvärde?"
+
+#: class-osadi-acf-field-term.php:52 class-osadi-acf-field-term.php:65
+#: class-osadi-acf-field-term.php:78
+msgid "Yes"
+msgstr "Ja"
+
+#: class-osadi-acf-field-term.php:53 class-osadi-acf-field-term.php:66
+#: class-osadi-acf-field-term.php:79
+msgid "No"
+msgstr "Nej"
+
+#: class-osadi-acf-field-term.php:60
+msgid "Select multiple values?"
+msgstr "Välj multipla värden?"
+
+#: class-osadi-acf-field-term.php:73
+msgid "Hide empty?"
+msgstr "Dölj tomma?"
+
+#: class-osadi-acf-field-term.php:86
+msgid "Term ID"
+msgstr "Term ID"
+
+#: class-osadi-acf-field-term.php:87
+msgid "Taxonomy name & Term ID"
+msgstr "Namn på taxonomi & Term ID"
+
+#: class-osadi-acf-field-term.php:88
+msgid "Term Object"
+msgstr "Termobjekt"
+
+#: class-osadi-acf-field-term.php:92
+msgid "Timber Term"
+msgstr "Timber Term"
+
+#: class-osadi-acf-field-term.php:97
+msgid "Return format"
+msgstr "Returnera som"
