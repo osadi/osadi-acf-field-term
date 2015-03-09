@@ -161,9 +161,9 @@ class Osadi_ACF_Field_Term extends acf_field
 	{
 		$dir          = plugin_dir_url( __FILE__ );
 		$handle       = str_replace( '_', '-', $this->name );
-		$dependencies = array( 'acf-field-group' );
+		$dependencies = array( 'acf-input' );
 
-		wp_register_script( $handle, "{$dir}js/{$handle}.js", $dependencies );
+		wp_register_script( $handle, "{$dir}js/{$handle}.js", $dependencies, $version = false, $in_footer = true );
 		wp_localize_script( $handle, $this->name, array( 'field_name' => $this->name ) );
 		wp_enqueue_script( $handle );
 	}
