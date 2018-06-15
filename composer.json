@@ -4,7 +4,7 @@
     "type": "wordpress-plugin",
     "keywords": ["wordpress", "plugin", "acf"],
     "homepage": "https://github.com/osadi/osadi-acf-field-term",
-    "license": "GPL-2.0-or-later"
+    "license": "GPL-2.0-or-later",
     "require": {
         "composer/installers": "v1.5.0"
     }
