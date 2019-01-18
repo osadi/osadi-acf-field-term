@@ -1,10 +1,10 @@
 <?php
 /**
  * Osadi Term Field
- * 
+ *
  * Registers a new field type with ACF. This field makes it possible to set up a relation
  * to one or more taxonomy terms on the edit screen.
- * 
+ *
  */
 class Osadi_ACF_Field_Term extends acf_field
 {
@@ -42,28 +42,20 @@ class Osadi_ACF_Field_Term extends acf_field
 	{
 		// Allow null.
 		acf_render_field_setting( $field, array(
-			'label'        => __( 'Allow Null?', 'osadi-acf-term' ),
-			'instructions' => '',
-			'type'         => 'radio',
-			'name'         => 'allow_null',
-			'choices'      => array(
-				1 => __( 'Yes', 'osadi-acf-term' ),
-				0 => __( 'No', 'osadi-acf-term' ),
-			),
-			'layout'       => 'horizontal',
+			'label'			=> __('Allow Null?','osadi-acf-term'),
+			'instructions'	=> '',
+			'name'			=> 'allow_null',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 
 		// Allow multiple values.
 		acf_render_field_setting( $field, array(
-			'label'        => __( 'Select multiple values?', 'osadi-acf-term' ),
-			'instructions' => '',
-			'type'         => 'radio',
-			'name'         => 'multiple',
-			'choices'      => array(
-				1 => __( 'Yes', 'osadi-acf-term' ),
-				0 => __( 'No', 'osadi-acf-term' ),
-			),
-			'layout'       => 'horizontal',
+			'label'			=> __('Select multiple values?','osadi-acf-term'),
+			'instructions'	=> '',
+			'name'			=> 'multiple',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 
 		// Hide empty.
@@ -77,6 +69,29 @@ class Osadi_ACF_Field_Term extends acf_field
 				0 => __( 'No', 'osadi-acf-term' ),
 			),
 			'layout'       => 'horizontal',
+		));
+
+		// ui
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Stylized UI','osadi-acf-term'),
+			'instructions'	=> '',
+			'name'			=> 'ui',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+		));
+
+		// ajax
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Use AJAX to lazy load choices?','osadi-acf-term'),
+			'instructions'	=> '',
+			'name'			=> 'ajax',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+			'conditions'	=> array(
+				'field'		=> 'ui',
+				'operator'	=> '==',
+				'value'		=> 1
+			)
 		));
 
 		// Setup choices for our return formats
@@ -113,7 +128,7 @@ class Osadi_ACF_Field_Term extends acf_field
 		$field['ui']      = 1;
 		$field['ajax']    = 0;
 		$field['choices'] = $this->get_taxonomies_terms_assoc( $field['hide_empty'] );
-		
+
 		acf_render_field( $field );
 	}
 
@@ -132,15 +147,15 @@ class Osadi_ACF_Field_Term extends acf_field
 		$taxonomies_terms = array();
 
 		foreach ( array_keys( $taxonomies ) as $taxonomy ) {
-		
+
 			$label = $taxonomies[ $taxonomy ];
 			$terms = get_terms( $taxonomy, array( 'hide_empty' => $hide_empty ) );
 
 			if ( ! empty( $terms ) ) {
 				$taxonomies_terms[ $label ] = array();
-				
+
 				foreach ( $terms as $term ) {
-					$key                                = "{$term->term_id}:{$taxonomy}"; 
+					$key                                = "{$term->term_id}:{$taxonomy}";
 					$taxonomies_terms[ $label ][ $key ] = $term->name;
 				}
 			}
@@ -151,13 +166,13 @@ class Osadi_ACF_Field_Term extends acf_field
 
 	/**
 	 * Enqueue our javascript.
-	 * 
+	 *
 	 * This action seems to be called in:
 	 * @see acf_input_listener::__construct()
 	 * @see acf_admin_field_group::admin_enqueue_scripts()
-	 * 
+	 *
 	 */
-	public function input_admin_enqueue_scripts() 
+	public function input_admin_enqueue_scripts()
 	{
 		$dir          = plugin_dir_url( __FILE__ );
 		$handle       = str_replace( '_', '-', $this->name );
@@ -170,7 +185,7 @@ class Osadi_ACF_Field_Term extends acf_field
 
 	/**
 	*  This filter is applied to the $value after it is loaded from the db and before it is returned to the template.
-	*  
+	*
 	*  If 'return_format' is 'object' we change the value to contain the term objects instead of IDs.
 	*
 	*  @type filter
@@ -180,13 +195,13 @@ class Osadi_ACF_Field_Term extends acf_field
 	*  @param array  $field   All the field options loaded from db.
 	*  @return array $terms   The modified value.
 	*/
-	
+
 	public function format_value( $value, $post_id, $field )
 	{
 		if ( empty( $value ) ) {
 			return $value;
 		}
-		
+
 		$terms = array();
 
 		// Wrap our string in an array.
