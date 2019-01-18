@@ -71,29 +71,6 @@ class Osadi_ACF_Field_Term extends acf_field
 			'layout'       => 'horizontal',
 		));
 
-		// ui
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Stylized UI','osadi-acf-term'),
-			'instructions'	=> '',
-			'name'			=> 'ui',
-			'type'			=> 'true_false',
-			'ui'			=> 1,
-		));
-
-		// ajax
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Use AJAX to lazy load choices?','osadi-acf-term'),
-			'instructions'	=> '',
-			'name'			=> 'ajax',
-			'type'			=> 'true_false',
-			'ui'			=> 1,
-			'conditions'	=> array(
-				'field'		=> 'ui',
-				'operator'	=> '==',
-				'value'		=> 1
-			)
-		));
-
 		// Setup choices for our return formats
 		$return_format_choices = array(
 			'id'          => __( 'Term ID', 'osadi-acf-term' ),
